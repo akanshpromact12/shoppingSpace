@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.promact.akansh.shoppingappdemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/shop"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/MyMaterialTheme">
+        <receiver android:name="com.promact.akansh.shoppingappdemo.SMSClasses.SmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name=".HomeModule.HomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".AddProductsModule.AddProductsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeModule.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".UpdateProductsModule.UpdateProductActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeModule.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".LoginModule.LoginActivity"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+        </activity>
+        <activity android:name=".PinModule.PinActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="40c0eb8838bd29b155c0bd7c0be09617ea6f0cc1" />
+
+        <activity android:name=".FrontPageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

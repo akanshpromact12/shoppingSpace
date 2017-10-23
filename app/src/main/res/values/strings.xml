@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">The Shoppe Space</string>
+    <string name="backdrop_title">love music</string>
+    <string name="backdrop_subtitle">subtitle</string>
+    <string name="prodNameTxtView">Enter the product Name:</string>
+    <string name="txtViewProdRating">Enter the product Rating</string>
+    <string name="prodCostTxtView">Enter the cost of product</string>
+    <string name="btnTextAddProd">Add Product</string>
+    <string name="addProduct">Add a product</string>
+    <string name="updtProduct">Update this product</string>
+    <string name="delProduct">Delete this product</string>
+    <string name="_8942">⋮</string>
+    <string name="btnTextEditProd">Edit Product</string>
+    <string name="zero">0</string>
+    <string name="update">UPDATE PRODUCT</string>
+    <string name="add">ADD PRODUCT</string>
+    <string name="heading">Heading</string>
+    <string name="backButton">Back</string>
+    <string name="uname">Username</string>
+    <string name="pwd">Password</string>
+    <string name="number_zero">0</string>
+    <string name="number_one">1</string>
+    <string name="number_two">2</string>
+    <string name="number_three">3</string>
+    <string name="number_four">4</string>
+    <string name="number_five">5</string>
+    <string name="number_six">6</string>
+    <string name="number_seven">7</string>
+    <string name="number_eight">8</string>
+    <string name="number_nine">9</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_backspace">Back</string>
+    <string name="btnGo">Go</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="messageConfirmation">Thank you for registering with The Shoppe Space</string>
+</resources>

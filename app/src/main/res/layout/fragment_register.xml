@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/relative_reg"
+    android:layout_marginTop="35dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/unameHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/reg_uname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/pwdHolder"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/unameHolder"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/reg_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/confPwdHolder"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/pwdHolder"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/reg_conf_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Confirm Password"
+            android:textColorHint="#541265"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/mobNoHolder"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/confPwdHolder"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/reg_mob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Number"
+            android:inputType="number"
+            android:maxLength="10" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/reg_submit"
+        android:imeOptions="actionSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@+id/mobNoHolder"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/black"
+        android:text="Register"
+        android:textSize="25sp"/>
+
+</RelativeLayout>

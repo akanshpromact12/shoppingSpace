@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_chat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddProductsModule.AddProductsActivity"
+    android:backgroundTint="@color/colorAccent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include layout="@layout/toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/txtViewProdName"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:labelFor="@+id/txtBoxProdName"
+        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/prodNameTxtView"
+        android:layout_below="@+id/appbar" />
+
+    <EditText
+        android:id="@+id/txtBoxProdName"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewProdName"
+        android:paddingTop="5dp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/txtViewProdRating"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txtViewProdRating"
+        android:layout_below="@+id/txtBoxProdName"
+        android:paddingTop="5dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarProdRating"
+        android:layout_width="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/txtViewProdRating"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:id="@+id/txtViewProdCost"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:labelFor="@+id/txtBoxProdCost"
+        android:layout_height="wrap_content"
+        android:text="@string/prodCostTxtView"
+        android:layout_below="@+id/ratingBarProdRating"
+        android:paddingTop="5dp" />
+
+    <EditText
+        android:id="@+id/txtBoxProdCost"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="@string/zero"
+        android:layout_below="@+id/txtViewProdCost"
+        android:paddingTop="5dp" />
+
+    <Button
+        android:id="@+id/btnAddProd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/btnTextAddProd"
+        android:background="@color/colorAccent"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/txtBoxProdCost"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>

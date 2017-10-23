@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "331550839381",
+    "firebase_url": "https://mvp-application-439f3.firebaseio.com",
+    "project_id": "mvp-application-439f3",
+    "storage_bucket": "mvp-application-439f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331550839381:android:2a9e65ddb74abce1",
+        "android_client_info": {
+          "package_name": "com.promact.akansh.firstmvpapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331550839381-o1nc9r91pka8m2s49n68qped9vf1plvu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.promact.akansh.firstmvpapp",
+            "certificate_hash": "22844ee0c8b9b9e4d28748f595ba1a2eec9ca1f4"
+          }
+        },
+        {
+          "client_id": "331550839381-capn5tuauf5c0ku5g21k08m94oduufu1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn8q-_nADMkOC-lcoGDawzs40wI211vh8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331550839381-capn5tuauf5c0ku5g21k08m94oduufu1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331550839381:android:82793634eaaf73c6",
+        "android_client_info": {
+          "package_name": "com.promact.akansh.shoppingappdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331550839381-6nb2k1cgslb10gdmm9lgt0r58oqhb2mb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.promact.akansh.shoppingappdemo",
+            "certificate_hash": "22844ee0c8b9b9e4d28748f595ba1a2eec9ca1f4"
+          }
+        },
+        {
+          "client_id": "331550839381-capn5tuauf5c0ku5g21k08m94oduufu1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn8q-_nADMkOC-lcoGDawzs40wI211vh8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331550839381-capn5tuauf5c0ku5g21k08m94oduufu1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

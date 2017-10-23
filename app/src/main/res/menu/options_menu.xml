@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/optionUpdateProd"
+        android:title="@string/updtProduct" />
+
+    <item
+        android:id="@+id/optionDeleteProd"
+        android:title="@string/delProduct" />
+</menu>

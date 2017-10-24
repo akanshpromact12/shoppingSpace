@@ -1,6 +1,8 @@
 package com.promact.akansh.shoppingappdemo.AddProductsModule;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.promact.akansh.shoppingappdemo.HomeModule.HomeActivity;
+import com.promact.akansh.shoppingappdemo.LoginModule.LoginActivity;
 import com.promact.akansh.shoppingappdemo.Model.Product;
 import com.promact.akansh.shoppingappdemo.R;
 
@@ -27,7 +30,8 @@ public class AddProductsActivity extends AppCompatActivity implements AddProduct
     public Button addProducts;
     public ImageView back;
     TextView heading;
-    ImageView addProduct;
+    ImageView addProduct, logout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class AddProductsActivity extends AppCompatActivity implements AddProduct
         productsPresenter = new AddProductsPresenter(this);
         heading = (TextView) findViewById(R.id.heading);
         addProduct = (ImageView) findViewById(R.id.addProductButton);
+        logout = (ImageView) findViewById(R.id.logout);
         heading.setText(getString(R.string.add));
         addProduct.setVisibility(View.GONE);
 
@@ -58,7 +63,19 @@ public class AddProductsActivity extends AppCompatActivity implements AddProduct
                 String name = prod_name.getText().toString().trim();
                 String price = prod_price.getText().toString().trim();
 
-                if (name.length() != 0 && Integer.parseInt(price) > 0) {
+                if (price.equals("")) {
+                    price = "0";
+                }
+
+                if (name.length() == 0) {
+                    prod_name.setError("Please enter a valid product name");
+                }
+
+                if (Integer.parseInt(price) == 0) {
+                    prod_price.setError("Price cannot be zero(0)");
+                }
+
+                if (!name.isEmpty() && Integer.parseInt(price) > 0) {
                     String pName = prod_name.getText().toString();
                     float pRating = prod_rating.getRating();
                     Double pCost = Double.parseDouble(prod_price.getText().toString());
@@ -70,17 +87,21 @@ public class AddProductsActivity extends AppCompatActivity implements AddProduct
                     prod_name.setText("");
                     prod_rating.setRating(0);
                     prod_price.setText("");
-                } else {
-                    if (Integer.parseInt(price) == 0) {
-                        Toast.makeText(AddProductsActivity.this,
-                                "Price cannot be zero(0)",
-                                Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(AddProductsActivity.this,
-                                "Please fill all fields properly",
-                                Toast.LENGTH_SHORT).show();
-                    }
                 }
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("userPrefs",
+                        Context.MODE_PRIVATE);
+                preferences.edit().clear().commit();
+
+                Intent intent = new Intent(AddProductsActivity.this,
+                        LoginActivity.class);
+                startActivity(intent);
+
+                finish();
             }
         });
     }

@@ -45,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     @Override
-    public void onBindViewHolder(final ProductViewHolder holder, int position) {
+    public void onBindViewHolder(final ProductViewHolder holder, final int position) {
         final Product product = products.get(position);
 
         holder.productImage.setImageResource(R.drawable.ic_bubble_in);
@@ -85,9 +85,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                                             new Thread(new Runnable() {
                                                 @Override
                                                 public void run() {
+                                                    products.remove(position);
                                                     presenter.delProducts(context, product);
 
                                                     progressDialog.dismiss();
+                                                    //notifyDataSetChanged();
                                                 }
                                             }).start();
                                         }

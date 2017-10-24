@@ -1,7 +1,9 @@
 package com.promact.akansh.shoppingappdemo.UpdateProductsModule;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.promact.akansh.shoppingappdemo.HomeModule.HomeActivity;
+import com.promact.akansh.shoppingappdemo.LoginModule.LoginActivity;
 import com.promact.akansh.shoppingappdemo.Model.Product;
 import com.promact.akansh.shoppingappdemo.R;
 
@@ -33,7 +36,7 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
     Button update;
     ImageView back;
     TextView heading;
-    ImageView addProduct;
+    ImageView updtProduct, logout;
     UpdateProductPresenter presenter;
 
     @Override
@@ -51,13 +54,14 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
         update = (Button) findViewById(R.id.btnUpdtProd);
         back = (ImageView) findViewById(R.id.backButton);
         heading = (TextView) findViewById(R.id.heading);
-        addProduct = (ImageView) findViewById(R.id.addProductButton);
+        updtProduct = (ImageView) findViewById(R.id.addProductButton);
+        logout = (ImageView) findViewById(R.id.logout);
 
         prodName.setText(name);
         prodRating.setRating(Float.parseFloat(rating));
         prodPrice.setText(price.toString());
         heading.setText(getString(R.string.update));
-        addProduct.setVisibility(View.GONE);
+        updtProduct.setVisibility(View.GONE);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +78,7 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
                         .getText().toString());
 
                 final Product products = new Product(prodName.getText().toString(),
-                        ""+prodRating.getRating(),
+                        "" + prodRating.getRating(),
                         Double.parseDouble(prodPrice.getText().toString()));
                 final Product productOld = new Product(name, rating, price);
 
@@ -89,6 +93,20 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
                         dialog.dismiss();
                     }
                 }).start();
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("userPrefs",
+                        Context.MODE_PRIVATE);
+                preferences.edit().clear().commit();
+
+                Intent intent = new Intent(UpdateProductActivity.this,
+                        LoginActivity.class);
+                startActivity(intent);
+
+                finish();
             }
         });
     }

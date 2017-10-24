@@ -1,7 +1,9 @@
 package com.promact.akansh.shoppingappdemo.HomeModule;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -75,49 +77,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getString(R.string.app_name));
 
-        /*FirebaseApp.initializeApp(HomeActivity.this);
-        mAuth = FirebaseAuth.getInstance();
-        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-            @Override
-            public void onVerificationCompleted(PhoneAuthCredential credential) {
-                Log.d(TAG, "onVerificationCompleted:" + credential);
-                mVerificationInProgress = false;
-            }
-
-            @Override
-            public void onVerificationFailed(FirebaseException e) {
-                Log.w(TAG, "onVerificationFailed", e);
-                mVerificationInProgress = false;
-
-                if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
-                    // [START_EXCLUDE]
-                    Log.d(TAG, "Invalid phone number.");
-                    // [END_EXCLUDE]
-                } else if (e instanceof FirebaseTooManyRequestsException) {
-                    // The SMS quota for the project has been exceeded
-                    // [START_EXCLUDE]
-                    Snackbar.make(findViewById(android.R.id.content), "Quota exceeded.",
-                            Snackbar.LENGTH_SHORT).show();
-                    // [END_EXCLUDE]
-                }
-            }
-
-            @Override
-            public void onCodeSent(String verificationId,
-                                   PhoneAuthProvider.ForceResendingToken token) {
-                Log.d(TAG, "onCodeSent:" + verificationId);
-
-                mVerificationCode = verificationId;
-                mResendToken = token;
-                Log.d(TAG, "verif Code: " + mVerificationCode +
-                        " resendToken: " + mResendToken);
-            }
-        };
-        PhoneAuthProvider.getInstance().verifyPhoneNumber("+917990630414",
-                60, TimeUnit.SECONDS, this, mCallbacks);*/
-
         productsView = (RecyclerView) findViewById(R.id.recycler_view);
         mainProductList = new ArrayList<>();
         presenter = new HomePresenter(this);
@@ -138,6 +97,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         productsView.setAdapter(productAdapter);
 
         presenter.showAllProducts(HomeActivity.this);
+        productAdapter.notifyDataSetChanged();
 
         addProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +108,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("userPrefs",
+                        Context.MODE_PRIVATE);
+                preferences.edit().clear().commit();
+
                 Intent intent = new Intent(HomeActivity.this,
                         LoginActivity.class);
                 startActivity(intent);
@@ -222,8 +186,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
     public void showMessage(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(intent);
+        productAdapter.notifyDataSetChanged();
     }
 
     @Override

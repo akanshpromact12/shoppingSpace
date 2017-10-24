@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -129,6 +130,15 @@ public class Login extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences preferences = getActivity()
+                        .getSharedPreferences("userPrefs",
+                                Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("loggedIn", true);
+                editor.putString("username", username.getText().toString());
+                editor.putString("password", password.getText().toString());
+                editor.commit();
+
                 presenter.checkCredentials(username.getText().toString(),
                         password.getText().toString(),
                         rootView.getContext());

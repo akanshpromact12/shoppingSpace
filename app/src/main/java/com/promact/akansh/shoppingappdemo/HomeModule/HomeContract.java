@@ -14,7 +14,7 @@ class HomeContract {
     }
 
     interface HomePresenter {
-        void showAllProducts(Context context);
+        void showAllProducts(Context context, String unm);
         void addProducts(Context context);
         void updtProducts(Context context, Product products);
         void delProducts(Context context, Product products);

@@ -8,6 +8,7 @@ public class Product {
     private String productName;
     private String productDesc;
     private double sellingPrice;
+    private String authUser;
 
     public Product() {
 
@@ -17,12 +18,15 @@ public class Product {
         this.productName = product.getProductName();
         this.productDesc = product.getProductDesc();
         this.sellingPrice = product.getSellingPrice();
+        this.authUser = product.getAuthUser();
+
     }
 
-    public Product(String productName, String productDesc, Double sellingPrice) {
+    public Product(String productName, String productDesc, Double sellingPrice, String authUser) {
         this.productName = productName;
         this.productDesc = productDesc;
         this.sellingPrice = sellingPrice;
+        this.authUser = authUser;
     }
 
     public String getProductName() {
@@ -48,4 +52,8 @@ public class Product {
     public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
+
+    public String getAuthUser() { return authUser; }
+
+    public void setAuthUser(String authUser) { this.authUser = authUser; }
 }

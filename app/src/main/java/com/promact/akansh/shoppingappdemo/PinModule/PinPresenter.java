@@ -34,7 +34,7 @@ public class PinPresenter implements PinContract.RegisterPresenter {
 
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please wait...");
-        progressDialog.setTitle("Adding the product");
+        progressDialog.setTitle("Adding the user");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
 

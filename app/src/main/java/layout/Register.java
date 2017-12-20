@@ -2,6 +2,7 @@ package layout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -193,6 +194,15 @@ public class Register extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences preferences = getActivity()
+                        .getSharedPreferences("userPrefs",
+                                Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("loggedIn", true);
+                editor.putString("username", email.getText().toString());
+                editor.putString("password", pwd.getText().toString());
+                editor.commit();
+
                 String username = email.getText().toString();
                 String password = pwd.getText().toString();
                 String mobileNo = mobile.getText().toString();

@@ -64,8 +64,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(HomeActivity.this, "In HomeActivity",
-                Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -89,6 +87,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         back.setVisibility(View.GONE);
         heading.setText(getString(R.string.app_name));
 
+        final SharedPreferences prefs = getSharedPreferences("userPrefs",
+                Context.MODE_PRIVATE);
+        final String unm = prefs.getString("username", "");
+
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
         productsView.setLayoutManager(layoutManager);
         productsView.addItemDecoration(new GridSpacingItemDecoration(2,
@@ -96,7 +98,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         productsView.setItemAnimator(new DefaultItemAnimator());
         productsView.setAdapter(productAdapter);
 
-        presenter.showAllProducts(HomeActivity.this);
+        presenter.showAllProducts(HomeActivity.this, unm);
         productAdapter.notifyDataSetChanged();
 
         addProduct.setOnClickListener(new View.OnClickListener() {
@@ -108,9 +110,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.Home
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences preferences = getSharedPreferences("userPrefs",
-                        Context.MODE_PRIVATE);
-                preferences.edit().clear().commit();
+                prefs.edit().clear().commit();
 
                 Intent intent = new Intent(HomeActivity.this,
                         LoginActivity.class);

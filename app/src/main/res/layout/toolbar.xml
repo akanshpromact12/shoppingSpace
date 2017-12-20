@@ -48,6 +48,8 @@
                 android:paddingEnd="10dp"
                 android:paddingStart="0dp" />
 
+            
+
         </RelativeLayout>
 
         <TextView

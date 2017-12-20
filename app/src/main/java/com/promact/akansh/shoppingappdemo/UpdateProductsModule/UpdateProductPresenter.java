@@ -1,11 +1,9 @@
 package com.promact.akansh.shoppingappdemo.UpdateProductsModule;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.promact.akansh.shoppingappdemo.APIClient;
 import com.promact.akansh.shoppingappdemo.APIInterface;

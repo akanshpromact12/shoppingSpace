@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +22,6 @@ import com.promact.akansh.shoppingappdemo.LoginModule.LoginActivity;
 import com.promact.akansh.shoppingappdemo.Model.Product;
 import com.promact.akansh.shoppingappdemo.R;
 
-import java.util.Locale;
 
 public class UpdateProductActivity extends AppCompatActivity implements UpdateProductsContract.UpdateProdView {
     String name;
@@ -59,7 +57,7 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
 
         prodName.setText(name);
         prodRating.setRating(Float.parseFloat(rating));
-        prodPrice.setText(price.toString());
+        prodPrice.setText(""+price);
         heading.setText(getString(R.string.update));
         updtProduct.setVisibility(View.GONE);
 
@@ -70,6 +68,10 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
             }
         });
 
+        SharedPreferences prefs = getSharedPreferences("userPrefs",
+                MODE_PRIVATE);
+        final String unm = prefs.getString("username", "");
+
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,8 +81,10 @@ public class UpdateProductActivity extends AppCompatActivity implements UpdatePr
 
                 final Product products = new Product(prodName.getText().toString(),
                         "" + prodRating.getRating(),
-                        Double.parseDouble(prodPrice.getText().toString()));
-                final Product productOld = new Product(name, rating, price);
+                        Double.parseDouble(prodPrice.getText().toString()),
+                        unm);
+                final Product productOld = new Product(name, rating, price,
+                        unm);
 
                 final ProgressDialog dialog = ProgressDialog.show(UpdateProductActivity.this,
                         "Please Wait...", "updation of records in progress", true);

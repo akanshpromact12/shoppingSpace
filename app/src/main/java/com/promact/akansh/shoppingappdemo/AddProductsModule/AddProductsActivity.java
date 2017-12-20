@@ -57,6 +57,10 @@ public class AddProductsActivity extends AppCompatActivity implements AddProduct
             }
         });
 
+        SharedPreferences prefs = getSharedPreferences("userPrefs",
+                MODE_PRIVATE);
+        final String unm = prefs.getString("username", "");
+
         addProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +84,7 @@ public class AddProductsActivity extends AppCompatActivity implements AddProduct
                     float pRating = prod_rating.getRating();
                     Double pCost = Double.parseDouble(prod_price.getText().toString());
 
-                    Product product = new Product(pName, "" + pRating, pCost);
+                    Product product = new Product(pName, "" + pRating, pCost, unm);
                     productsPresenter.addProducts(AddProductsActivity.this, product);
 
                     prod_name.requestFocus();

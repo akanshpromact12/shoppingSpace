@@ -2,8 +2,10 @@ package com.promact.akansh.shoppingappdemo.HomeModule;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.StrictMode;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,6 +13,7 @@ import com.promact.akansh.shoppingappdemo.APIClient;
 import com.promact.akansh.shoppingappdemo.APIInterface;
 import com.promact.akansh.shoppingappdemo.AddProductsModule.AddProductsActivity;
 import com.promact.akansh.shoppingappdemo.Model.Product;
+import com.promact.akansh.shoppingappdemo.PinModule.PinActivity;
 import com.promact.akansh.shoppingappdemo.UpdateProductsModule.UpdateProductActivity;
 
 import org.json.JSONArray;
@@ -34,7 +37,7 @@ public class HomePresenter implements HomeContract.HomePresenter {
     }
 
     @Override
-    public void showAllProducts(final Context context) {
+    public void showAllProducts(final Context context, final String unm) {
         APIInterface apiInterface = APIClient.getClient()
                 .create(APIInterface.class);
         Call<ResponseBody> call =  apiInterface.getAllProducts();
@@ -59,10 +62,13 @@ public class HomePresenter implements HomeContract.HomePresenter {
                             String prodName = jsonObject.getString("productName");
                             String prodDesc = jsonObject.getString("productDesc");
                             double cost = Double.parseDouble(jsonObject.getString("sellingPrice"));
+                            String authUser = jsonObject.getString("authUser");
 
-                            Product product = new Product(prodName, prodDesc, cost);
-                            productList.add(product);
-                            view.showProducts(productList);
+                            if (authUser.equals(unm)) {
+                                Product product = new Product(prodName, prodDesc, cost, unm);
+                                productList.add(product);
+                                view.showProducts(productList);
+                            }
                         }
                     }
                 } catch (Exception ex) {
@@ -74,9 +80,19 @@ public class HomePresenter implements HomeContract.HomePresenter {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(context, "failed to gather product(s). Please turn " +
-                        "on your internet, if it's off.",
-                        Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog
+                        .Builder(context);
+
+                builder.setTitle("Products Information")
+                        .setMessage("Failed to gather product(s). Please " +
+                                "turn on your internet, if it's off.")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
 
                 progressDialog.dismiss();
             }

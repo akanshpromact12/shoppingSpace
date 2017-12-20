@@ -92,7 +92,8 @@ public class RegisterCheckClass extends AsyncTask<Void, Void, String> {
                     Log.d(TAG, "jsonArr: " + jsonArray.length());
                     JSONObject jsonObject = jsonObj
                             .getJSONObject(jsonArray.get(i).toString());
-                    if (jsonObject.getString("mobileno").equals(users.getMobileno())) {
+                    if (jsonObject.getString("mobileno").equals(users.getMobileno()) ||
+                            jsonObject.getString("username").equals(users.getUsername())) {
                         msg = "Data Exists";
                     } else if (!(users.getMobileno().equals(jsonObject.getString("mobileno")))) {
                         msg = "Data not exists";

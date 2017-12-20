@@ -3,13 +3,13 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.promact.akansh.shoppingappdemo"
         minSdkVersion 23
         targetSdkVersion 25
         versionCode 1
-        versionName "2.1"
+        versionName "2.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
@@ -57,6 +57,7 @@ dependencies {
     compile dependencies.support
     compile dependencies.playAuth
     compile dependencies.editCodeView
+    compile dependencies.CircleImg
     compile 'com.google.firebase:firebase-auth:11.0.4'
     compile 'com.android.support.constraint:constraint-layout:+'
 }
